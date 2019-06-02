@@ -1,22 +1,12 @@
 import React from 'react'
+import {app} from './tests'
 import firebase from 'firebase'
-
-const config = {
-    apiKey: "AIzaSyBnWfRAy23f8zJ3614T_RwxIW53Czipek8",
-    authDomain: "fir-movil-224dc.firebaseapp.com",
-    databaseURL: "https://fir-movil-224dc.firebaseio.com",
-    projectId: "fir-movil-224dc",
-    storageBucket: "fir-movil-224dc.appspot.com",
-    messagingSenderId: "53387248144"
-  };
-
-  const app = firebase.initializeApp(config);
 
 class FileUpload extends React.Component {
 
     constructor(props) {
         super(props);
-        
+
         this.state = {
             fileName: ""
         };
@@ -29,21 +19,22 @@ class FileUpload extends React.Component {
         this.setState({ fileName: e.target.files[0].name });
     }
 
-    uploadFile(e){
+    uploadFile(e) {
         var file = document.getElementById('uploadBtn').files[0];
-        if(file !== undefined){
+        if (file !== undefined) {
             app.storage().ref('images').child(file.name).put(file).on(
-                firebase.storage.TaskEvent.STATE_CHANGED, function(snapshot) {
-                var percent = snapshot.bytesTransferred / snapshot.totalBytes * 100;
-                console.log(percent + "% done");
-              },
-              null,
-               (snapshot)=>{alert('File successfully uploaded!')});
-        }else{
+                firebase.storage.TaskEvent.STATE_CHANGED, function (snapshot) {
+                    var percent = snapshot.bytesTransferred / snapshot.totalBytes * 100;
+                    console.log(percent + "% done");
+                },
+                null,
+                (snapshot) => { alert('File successfully uploaded!') });
+        } else {
             alert('Selecciona un archivo!');
         }
 
     }
+
 
     render() {
         return (
@@ -51,7 +42,7 @@ class FileUpload extends React.Component {
                 <div className="mdl-cell mdl-cell--3-col">
                     <button id="upload-button" className="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent mdl-buton--raised" onClick={this.uploadFile}>
                         Upload
-                    </button>                    
+                    </button>
                 </div>
                 <div className="mdl-cell mdl-cell--9-col">
                     <div className="mdl-textfield mdl-js-textfield mdl-textfield--file">
