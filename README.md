@@ -1,7 +1,7 @@
 # WebClient_FirebaseStorage
 
-Autor: Luis Alfredo Pérez Linares
+Author: Luis Alfredo Pérez Linares
 
-Tecnologías usadas: ReactJS, Javascript, HTML/CSS, Firebase
+Technologies usadas: ReactJS, Javascript, HTML/CSS, Firebase
 
-Este es un módulo de un proyecto de una aplicación móvil. La función de este módulo es permitir la carga de archivos a Firebase Storage (Medio de almacenamiento proporcionado por Firebase).
+This is an external module of a Mobile App. This is used for (testing purposes) uploading files through a web page to Firebase Storage. This file are used in a Mobile App.
